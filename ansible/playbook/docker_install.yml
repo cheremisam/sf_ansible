@@ -1,0 +1,14 @@
+- name: "Install and run docker"
+  hosts: "all"
+  tasks:
+  - name: Install docker
+    ansible.builtin.apt:
+      name: "docker.io"
+      state: "latest"
+      only_upgrade: false
+    become: true
+  - name: Run docker hello-world
+    command: docker run hello-world
+    register: docker_hello
+    become: true
+  - debug: msg="{{ docker_hello.stdout }}"

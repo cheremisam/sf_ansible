@@ -1,0 +1,14 @@
+- name: Install and run mysql service
+  hosts: "all"
+  tasks:
+  - name: Install mysql service
+    ansible.builtin.apt:
+      name: "mysql-server"
+      state: "latest"
+      only_upgrade: false
+    become: true
+  - name: Run mysql service
+    ansible.builtin.service:
+      name: mysql
+      state: started
+    become: true
