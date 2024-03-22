@@ -1,0 +1,18 @@
+- name: "Install and run nginx"
+  gather_facts: true
+  hosts: "all"
+  become: true
+  tasks:
+  - name: Install nginx
+    ansible.builtin.apt:
+      name: "nginx"
+      state: "latest"
+      only_upgrade: false
+  - name: edit var/www/html/index.html
+    template:
+      src: templates/index_html.j2
+      dest: /var/www/html/index.html
+  - name: Run nginx service
+    ansible.builtin.service:
+      name: nginx 
+      state: started

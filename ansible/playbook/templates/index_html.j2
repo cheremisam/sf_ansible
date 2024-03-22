@@ -1,0 +1,7 @@
+HostName: {{ ansible_facts.hostname }} <br>
+"lsb": <br>
+    "codename": {{ ansible_facts.lsb.codename }}, <br>
+    "description": {{ ansible_facts.lsb.description }}, <br>
+    "id": {{ ansible_facts.lsb.id }}, <br>
+    "major_release": {{ ansible_facts.lsb.major_release }}, <br>
+    "release": {{ ansible_facts.lsb.release }}
