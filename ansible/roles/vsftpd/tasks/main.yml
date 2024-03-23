@@ -1,0 +1,12 @@
+---
+# tasks file for vsftpd
+- name: install package
+  apt:
+    name: vsftpd
+    state: latest
+ 
+- name: start service
+  service:
+    name: vsftpd
+    state: started
+    enabled: yes
