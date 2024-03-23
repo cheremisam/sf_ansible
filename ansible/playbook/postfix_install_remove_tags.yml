@@ -1,0 +1,21 @@
+- name: Install\Remove and run postfix service
+  hosts: "all"
+  gather_facts: false
+  become: true
+  tasks:
+  - name: Install postfix service
+    ansible.builtin.apt:
+      name: "postfix"
+      state: "latest"
+      only_upgrade: false
+    tags: init postfix
+  - name: Run postfix service
+    ansible.builtin.service:
+      name: postfix
+      state: started
+    tags: init postfix
+  - name: Remove postfix service
+    ansible.builtin.apt:
+      name: "postfix"
+      state: "absent"
+    tags: drop postfix
