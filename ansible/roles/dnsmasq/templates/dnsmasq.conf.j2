@@ -1,0 +1,8 @@
+{% if dnsmasq.address is defined %}
+listen-address={{dnsmasq.address}}
+{% else %}
+listen-address=0.0.0.0
+{% endif %}
+expand-hosts
+cache-size={{dnsmasq.cache_size}}
+resolv-file={{resolv_file}}

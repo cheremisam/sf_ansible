@@ -1,0 +1,7 @@
+---
+# handlers file for dnsmasq
+
+- name: reload dnsmasq
+  service:
+    name: dnsmasq
+    state: reloaded

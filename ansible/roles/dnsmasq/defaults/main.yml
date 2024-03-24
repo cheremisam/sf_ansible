@@ -1,0 +1,11 @@
+---
+# defaults file for dnsmasq
+dnsmasq:
+  address: 0.0.0.0
+  cache_size: 1000
+
+resolv_file: /etc/dnsmasq_resolv.conf
+resolv_servers:
+  - 8.8.8.8
+  - 8.8.4.4
+   

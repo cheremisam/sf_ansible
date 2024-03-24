@@ -1,0 +1,34 @@
+---
+# tasks file for dnsmasq
+
+- name: install dnsmasq
+  apt:
+    name:
+      - dnsmasq
+      - resolvconf
+    state: present
+    update_cache: yes
+
+- name: configure dnsmasq
+  template:
+    src: dnsmasq.conf.j2
+    dest: /etc/dnsmasq.conf
+  notify: reload dnsmasq
+
+- name: configure resolv servers
+  template:
+    src: dnsmasq_resolv.conf.j2
+    dest: "{{ resolv_file }}"
+  notify: reload dnsmasq
+
+- name: disable systemd-resolved
+  systemd:
+    name: systemd-resolved
+    state: stopped
+    enabled: no
+
+- name: ensure dnsmasq is enabled and running
+  service:
+    name: dnsmasq
+    state: started
+    enabled: yes
