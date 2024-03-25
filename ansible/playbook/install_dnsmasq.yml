@@ -5,4 +5,4 @@
       dnsmasq:
         address: 0.0.0.0
         cache_size: 1000
-      resolv_servers: [ 8.8.8.8, 8.8.4.25 ]
+      resolv_servers: [ 8.8.8.8, 8.8.4.4 ]
