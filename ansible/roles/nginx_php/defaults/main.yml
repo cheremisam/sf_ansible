@@ -1,0 +1,5 @@
+---
+# defaults file for nginx_php
+server_name: "Nginx web server"
+app_work_dir: "/var/www/html"
+php_version: "8.1"
