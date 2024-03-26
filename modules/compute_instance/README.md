@@ -30,6 +30,7 @@ No modules.
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
 | <a name="input_family_image"></a> [family\_image](#input\_family\_image) | Image boot | `string` | n/a | yes |
+| <a name="input_name"></a> [name](#input\_name) | name vm | `string` | n/a | yes |
 | <a name="input_vpc_subnet_id"></a> [vpc\_subnet\_id](#input\_vpc\_subnet\_id) | VPC subnet network id | `string` | n/a | yes |
 | <a name="input_zone"></a> [zone](#input\_zone) | zone | `string` | n/a | yes |
 

@@ -12,3 +12,8 @@ variable "zone" {
   description = "zone"
   type        = string
 }
+
+variable "name" {
+  description = "name vm"
+  type        = string
+}

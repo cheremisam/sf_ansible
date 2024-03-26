@@ -13,8 +13,8 @@ terraform {
     bucket     = "tf-state-bucket"
     region     = "ru-central1-a"
     key        = "lemp.tfstate"
-    access_key = "YCAJEgYjnAnOU5pVU_5Z4UCpq"
-    secret_key = "YCOkGPbQBsX5fW7YZdKLo4R8htdAIM8VwX4bTlcW"
+    access_key = ""
+    secret_key = ""
 
     skip_region_validation      = true
     skip_credentials_validation = true
@@ -45,6 +45,15 @@ resource "yandex_vpc_subnet" "subnet1" {
 }
 
 module "compute_instance_1" {
+  name          = "nginx"
+  source        = "./modules/compute_instance"
+  family_image  = "ubuntu-2204-lts"
+  vpc_subnet_id = yandex_vpc_subnet.subnet1.id
+  zone          = yandex_vpc_subnet.subnet1.zone
+}
+
+module "compute_instance_2" {
+  name          = "php"
   source        = "./modules/compute_instance"
   family_image  = "ubuntu-2204-lts"
   vpc_subnet_id = yandex_vpc_subnet.subnet1.id

@@ -3,7 +3,7 @@ data "yandex_compute_image" "my_image" {
 }
 
 resource "yandex_compute_instance" "vm" {
-  name        = "tf-${var.family_image}"
+  name        = var.name
   platform_id = "standard-v3"
   zone        = var.zone
 
