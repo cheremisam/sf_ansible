@@ -1,0 +1,5 @@
+---
+# defaults file for roles/users
+user: "user123"
+group: "adm"
+key_pub: "files/id_user1.pub"

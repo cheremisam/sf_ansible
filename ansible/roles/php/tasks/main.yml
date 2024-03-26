@@ -1,0 +1,25 @@
+---
+# tasks file for roles/php
+- name: install php
+  apt:
+    name:
+      - php{{php_version}}
+      - php{{php_version}}-fpm
+  notify: Restart PHP-FPM
+
+- name: Ensure the default port php
+  ansible.builtin.lineinfile:
+    path: /etc/php/{{php_version}}/fpm/pool.d/www.conf
+    regexp: '^listen = '
+    line: "listen = {{php_port}}"
+  notify: Restart PHP-FPM
+
+- name: Ensure the allowed client php
+  ansible.builtin.lineinfile:
+    path: /etc/php/{{php_version}}/fpm/pool.d/www.conf
+    regexp: 'listen.allowed_clients = '
+    line: "listen.allowed_clients = {{allow_client}}"
+  notify: Restart PHP-FPM
+
+
+  

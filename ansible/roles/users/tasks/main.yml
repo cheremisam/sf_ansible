@@ -1,0 +1,19 @@
+---
+# tasks file for users
+- name: Add the user with group
+  ansible.builtin.user:
+    name: "{{user}}"
+    group: "{{group}}"
+- name: Make .ssh user dir
+  file:
+    path: "/home/{{user}}/.ssh"
+    state: directory
+- name: Copy ssh key pub
+  ansible.builtin.copy:
+    src: "{{key_pub}}"
+    dest: "/home/{{user}}/.ssh/id_rsa.pub"
+- name: Set authorized key taken from file
+  ansible.posix.authorized_key:
+    user: "{{user}}"
+    state: present
+    key: "{{ lookup('file', '{{key_pub}}') }}"

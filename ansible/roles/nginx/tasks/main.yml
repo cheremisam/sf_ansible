@@ -1,0 +1,31 @@
+---
+# tasks file for roles/nginx
+- name: install nginx
+  apt:
+    name:
+      - nginx 
+    state: present
+    update_cache: yes
+
+- name: Make app work dir
+  file:
+    path: "{{app_work_dir}}"
+    state: directory
+
+- name: Update index.php
+  template:
+    src: templates/index.php.conf
+    dest: "{{app_work_dir}}/index.php"
+
+- name: Update nginx config files
+  template:
+    src: templates/nginx.conf
+    dest: "/etc/nginx/sites-available/default"
+  notify: Restart Nginx
+
+- name: link nginx config
+  file:
+    src: "/etc/nginx/sites-available/default"
+    dest: "/etc/nginx/sites-enabled/default"
+    state: link
+  notify: Restart Nginx

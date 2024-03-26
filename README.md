@@ -19,6 +19,7 @@
 | Name | Source | Version |
 |------|--------|---------|
 | <a name="module_compute_instance_1"></a> [compute\_instance\_1](#module\_compute\_instance\_1) | ./modules/compute_instance | n/a |
+| <a name="module_compute_instance_2"></a> [compute\_instance\_2](#module\_compute\_instance\_2) | ./modules/compute_instance | n/a |
 
 ## Resources
 
@@ -38,5 +39,7 @@
 | Name | Description |
 |------|-------------|
 | <a name="output_external_ip_address_vm_1"></a> [external\_ip\_address\_vm\_1](#output\_external\_ip\_address\_vm\_1) | n/a |
+| <a name="output_external_ip_address_vm_2"></a> [external\_ip\_address\_vm\_2](#output\_external\_ip\_address\_vm\_2) | n/a |
 | <a name="output_internal_ip_address_vm_1"></a> [internal\_ip\_address\_vm\_1](#output\_internal\_ip\_address\_vm\_1) | n/a |
+| <a name="output_internal_ip_address_vm_2"></a> [internal\_ip\_address\_vm\_2](#output\_internal\_ip\_address\_vm\_2) | n/a |
 <!-- END_TF_DOCS -->

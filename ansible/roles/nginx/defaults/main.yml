@@ -1,0 +1,6 @@
+---
+# defaults file for roles/nginx
+server_name: "Nginx web server"
+app_work_dir: "/var/www/html"
+php_server: "127.0.0.1"
+php_port: "9000"

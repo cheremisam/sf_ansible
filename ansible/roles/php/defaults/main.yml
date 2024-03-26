@@ -1,0 +1,5 @@
+---
+# defaults file for roles/php
+php_version: "8.1"
+php_port: "9000"
+allow_client: "127.0.0.1"
