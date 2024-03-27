@@ -44,18 +44,14 @@ resource "yandex_vpc_subnet" "subnet1" {
   v4_cidr_blocks = ["192.168.0.0/24"]
 }
 
-module "compute_instance_1" {
-  name          = "nginx"
+module "compute_instance" {
+  for_each = {
+    for index, vm in var.virtual_machine :
+    vm.name => vm
+  }
+  name          = each.value.name
   source        = "./modules/compute_instance"
-  family_image  = "ubuntu-2204-lts"
-  vpc_subnet_id = yandex_vpc_subnet.subnet1.id
-  zone          = yandex_vpc_subnet.subnet1.zone
-}
-
-module "compute_instance_2" {
-  name          = "php"
-  source        = "./modules/compute_instance"
-  family_image  = "ubuntu-2204-lts"
+  family_image  = each.value.family_image
   vpc_subnet_id = yandex_vpc_subnet.subnet1.id
   zone          = yandex_vpc_subnet.subnet1.zone
 }
